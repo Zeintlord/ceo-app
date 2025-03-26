@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos</title>
+    <link rel="shortcut icon" href="/images/azul.svg" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Condensed:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="stylesheet" href="/assets/layout.css" />
+    <link rel="stylesheet" href="/Productos/productos.css" />
+    
+  </head>
+
+  <body class="body2" id="body">
+    <header id="header">
+      <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/index.html" id="logonav">
+            <img src="/images/logo.png" alt="Saint Analytics Logo" style="width: 100px" />
+          </a>
+          <button id="burguer" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="menu">
+              <ul class="menu2 navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/Nosotros/about.html">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/index.html#Servicios">Servicios</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/Empresas/exito.html">Empresas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/Productos/productos.html">Productos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/index.html#contact">Contacto</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+  
+    <div class="menuCELU" id="menuCELU">
+      <a class="brandCELU" href="/index.html">
+        <img src="/images/logo.png" alt="Saint Analytics Logo" />
+      </a>
+      <ul class="ulCELU">
+        <li class="liCELU">
+          <a class="aCELU" href="/Nosotros/about.html">Nosotros</a>
+        </li>
+        <li class="liCELU">
+          <a class="aCELU" href="/index.html#Servicios">Servicios</a>
+        </li>
+        <li class="liCELU">
+          <a class="aCELU" href="/Empresas/exito.html">Empresas</a>
+        </li>
+        <li class="liCELU">
+          <a class="aCELU" href="/Productos/productos.html">Productos</a>
+        </li>
+        <li class="liCELU">
+          <a class="aCELU" href="/index.html#contact">Contacto</a>
+        </li>
+      </ul>
+      <div class="redesCELU" aria-label="Enlaces a redes sociales">
+        <a href="#" aria-label="Discord">
+          <img class="iconsCELU" src="/images/discord.png" alt="Ícono de Discord" />
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <img class="iconsCELU" src="/images/linkedin.png" alt="Ícono de LinkedIn" />
+        </a>
+        <a href="#" aria-label="Instagram">
+          <img class="iconsCELU" src="/images/instagram.png" alt="Ícono de Instagram" />
+        </a>
+      </div>
+    </div>
+    <main class="main-content">
+      <section id="products" class="products-section">
+        <div class="section-header">
+          <h2>Nuestros Productos</h2>
+          <p class="section-subtitle">Soluciones adaptadas a tus necesidades</p>
+        </div>
+
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="card-icon">
+              <i class="bi bi-wallet2"></i>
+            </div>
+            <h3>Finanzas Personales</h3>
+            <p>¿Estás listo para llevar tus finanzas al próximo nivel? Con nuestro producto vas a poder analizar tus gastos e ingresos de una manera sencilla y eficiente.</p>
+            <ul class="feature-list">
+              <li><i class="bi bi-check-circle"></i> Análisis detallado de gastos</li>
+              <li><i class="bi bi-check-circle"></i> Seguimiento de ingresos</li>
+              <li><i class="bi bi-check-circle"></i> Reportes automatizados</li>
+            </ul>
+            <a href="/Finanzas/finanzas.html" class="card-cta">Ver más</a>
+          </div>
+
+          <div class="product-card">
+            <div class="card-icon">
+              <i class="bi bi-graph-up"></i>
+            </div>
+            <h3>Vintage</h3>
+            <p>Solución especializada para entidades financieras que necesitan un análisis profundo y detallado de su cartera de clientes y operaciones.</p>
+            <ul class="feature-list">
+              <li><i class="bi bi-check-circle"></i> Análisis de cartera</li>
+              <li><i class="bi bi-check-circle"></i> Seguimiento de operaciones</li>
+              <li><i class="bi bi-check-circle"></i> Indicadores financieros</li>
+            </ul>
+            <a href="/Vintage/vintage.html" class="card-cta">Ver más</a>
+          </div>
+
+          <div class="product-card">
+            <div class="card-icon">
+              <i class="bi bi-shop"></i>
+            </div>
+            <h3>Ventas & Costos</h3>
+            <p>Solución integral para comercios y empresas que buscan optimizar su gestión de ventas y controlar costos de forma eficiente, mejorando sus márgenes de beneficio y productividad.</p>
+            <ul class="feature-list">
+              <li><i class="bi bi-check-circle"></i> Control de inventario</li>
+              <li><i class="bi bi-check-circle"></i> Análisis de ventas</li>
+              <li><i class="bi bi-check-circle"></i> Gestión de costos</li>
+            </ul>
+            <a class="card-cta">Proximamente</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="features-section">
+        <div class="section-header">
+          <h2>Características Principales</h2>
+          <p class="section-subtitle">¿Por qué elegir nuestras soluciones?</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-item">
+            <i class="bi bi-shield-check"></i>
+            <h3>Seguridad Avanzada</h3>
+            <p>Protección de datos de nivel empresarial con encriptación y backups automáticos.</p>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-lightning-charge"></i>
+            <h3>Alto Rendimiento</h3>
+            <p>Procesamiento rápido y eficiente de grandes volúmenes de datos.</p>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-gear-wide-connected"></i>
+            <h3>Automatización</h3>
+            <p>Procesos automatizados que ahorran tiempo y reducen errores.</p>
+          </div>
+          <div class="feature-item">
+            <i class="bi bi-graph-up"></i>
+            <h3>Escalabilidad</h3>
+            <p>Crece con tu negocio sin comprometer el rendimiento.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2>¿Listo para transformar tus datos en decisiones?</h2>
+            <p>Descubre cómo podemos ayudarte a potenciar tu negocio con soluciones de análisis de datos a medida.</p>
+            <a href="/index.html#contact" class="cta-button">
+              Contáctanos <i class="bi bi-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-fixed-bottom">
+      <div class="footer-fixed-bottom" role="contentinfo">
+        <div class="overlap-3">
+          <div class="mail">
+            <img
+              class="zt-mail-icons"
+              src="/images/mail.png"
+              alt="Ícono de correo electrónico"
+            />
+            <div class="text-wrapper-18">info@saintanalytics.com</div>
+          </div>
+          <div>
+            <p class="text-wrapper-18 info">&copy; 2024 Saint Analytics</p>
+          </div>
+          <div class="redes" aria-label="Enlaces a redes sociales">
+            <a href="https://discord.gg/pGdd5uZS" target="_blank"  aria-label="Discord">
+              <img
+                class="zt-mail-icons"
+                src="/images/discord.png"
+                alt="Ícono de Discord"
+              />
+            </a>
+            <a href=""  aria-label="LinkedIn">
+              <img
+                class="zt-mail-icons"
+                src="/images/linkedin.png"
+                alt="Ícono de LinkedIn"
+              />
+            </a>
+            <a href="https://www.instagram.com/saintanalytics/" target="_blank" aria-label="Instagram">
+              <img
+                class="zt-mail-icons"
+                src="/images/instagram.png"
+                alt="Ícono de Instagram"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/js/animations.js"></script>
+    <script>
+      const progressCircle = document.querySelectorAll(".autoplay-progress");
+      const progressBar = document.querySelectorAll(".autoplay-progress-bar");
+
+      const swiper = new Swiper(".swiper", {
+        lazy: true,
+        slidesPerView: 1,
+        spaceBetween: 0,
+        grabCursor: true,
+        effect: "coverflow",
+        speed: 1500,
+        coverflowEffect: {
+          rotate: 100,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: false,
+        },
+        keyboard: {
+          enabled: true,
+        },
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          dynamicBullets: false,
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".slider-button-next",
+          prevEl: ".slider-button-prev",
+        },
+        on: {
+          autoplayTimeLeft(s, time, progress) {
+            progressCircle.forEach((progressCircle) => {
+              progressCircle
+                .querySelector("svg")
+                .style.setProperty("--progress", 1 - progress);
+              progressCircle.querySelector("span").textContent = `${Math.ceil(
+                time / 1000
+              )}s`;
+            });
+            progressBar.forEach((progressBar) => {
+              progressBar.style.setProperty(
+                "--progress",
+                `${(1 - progress) * 100}%`
+              );
+            });
+          },
+          init() {
+            changeBackground(this);
+          },
+          slideChange() {
+            changeBackground(this);
+          },
+        },
+      });
+
+      function changeBackground(slide) {
+        const getBackground =
+          slide.slides[slide.activeIndex].getAttribute("data-bg-color");
+
+        const getProgressColor = slide.slides[slide.activeIndex].getAttribute(
+          "data-progress-color"
+        );
+
+        document.body.style.backgroundColor = `${getBackground}`;
+
+        document.body.style.setProperty(
+          "--progress-color",
+          `${getProgressColor}`
+        );
+        document.body.style.setProperty("--theme-color", `${getBackground}`);
+      }
+    </script>
+    <script>
+      // Seleccionamos todos los productos de la grid
+      const productCards = document.querySelectorAll('.product-card');
+    
+      // Añadimos el evento para cuando el mouse entra en el área de la tarjeta
+      productCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.classList.add('featured'); // Añadimos la clase 'featured'
+        });
+    
+        // Añadimos el evento para cuando el mouse sale del área de la tarjeta
+        card.addEventListener('mouseleave', () => {
+          card.classList.remove('featured'); // Quitamos la clase 'featured'
+        });
+      });
+    </script>
+  </body>
+</html>

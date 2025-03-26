@@ -1,0 +1,282 @@
+:root {
+    --primary-color: #05caf2;
+    --secondary-color: #00e6c3;
+    --dark-blue: #16233f;
+    --light-blue: rgba(5, 202, 242, 0.1);
+    --text-color: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.8);
+    --gradient-primary: linear-gradient(135deg, #05caf2, #1093B1);
+    --gradient-secondary: linear-gradient(135deg, #00e6c3, #05caf2);
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --transition: all 0.3s ease;
+  }
+
+/* Contact Section */
+.contact-section {
+    padding: 6rem 2rem;
+  }
+  
+  .contact-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    background: rgba(22, 35, 63, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+  
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    padding: 3rem;
+  }
+  
+  /* Contact Info Side */
+  .contact-header {
+    margin-bottom: 3rem;
+  }
+  
+  .contact-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .contact-header p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+  }
+  
+  .contact-benefits {
+    display: grid;
+    gap: 2rem;
+  }
+  
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    transition: var(--transition);
+  }
+  
+  .benefit-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: 12px;
+    font-size: 1.5rem;
+    color: white;
+  }
+  
+  
+  .benefit-text h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  .benefit-text p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  
+/* Form Side */
+.contact-form-wrapper {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 20px;
+    padding: 2.5rem;
+  }
+  
+  .form-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  
+  .form-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+  
+  .form-subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-group i {
+    position: absolute;
+    left: 1rem;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    pointer-events: none;
+  }
+  
+  .input-group input,
+  .input-group textarea {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: var(--transition);
+  }
+  
+  .input-group textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .input-group input:focus,
+  .input-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 4px rgba(5, 202, 242, 0.1);
+  }
+  
+  .input-group input::placeholder,
+  .input-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 1rem;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(5, 202, 242, 0.2);
+  }
+  
+  .submit-button i {
+    transition: transform 0.3s ease;
+  }
+  
+  .submit-button:hover i {
+    transform: translateX(4px);
+  }
+  
+  /* Alert Styles */
+  .alert-container {
+    margin-top: 1.5rem;
+  }
+  
+  /* Estilos para la alerta de éxito */
+.alert-success {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(25, 135, 84, 0.1);
+  border: 1px solid rgba(25, 135, 84, 0.2);
+  border-radius: 12px;
+}
+
+.alert-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(25, 135, 84, 0.2);
+  border-radius: 50%;
+  color: #198754;
+}
+
+/* Estilos para la alerta de error */
+.alert-danger {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(220, 53, 69, 0.1); /* Fondo rojo claro */
+  border: 1px solid rgba(220, 53, 69, 0.2); /* Borde rojo */
+  border-radius: 12px;
+}
+
+.alert-icon-danger {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(220, 53, 69, 0.2); /* Fondo rojo claro */
+  border-radius: 50%;
+  color: #dc3545; /* Color rojo */
+}
+
+.alert-content h4 {
+  color: #198754; /* Verde para éxito */
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.alert-content p {
+  color: rgba(25, 135, 84, 0.8); /* Verde claro para éxito */
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Modificar los colores para la alerta de error */
+.alert-content-danger h4 {
+  color: #dc3545; /* Color rojo */
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.alert-content-danger p {
+  color: rgba(220, 53, 69, 0.8); /* Rojo claro */
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
