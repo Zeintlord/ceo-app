@@ -10,13 +10,8 @@ import streamlit as st
 # CONFIGURACIÓN INICIAL
 # =====================================
 
-# API key de Google Gemini (incluida directamente)
 API_KEY = "AIzaSyD7iuusLHEGLOXAGfH42wENZ5ujbekozJI"
-
-# Límite de caracteres para el contenido de cada agente
 MAX_CHARS = 10000
-
-# Endpoint de la API de Gemini
 API_ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
 
 # Mensajes de sistema para cada uno de los 10 agentes
@@ -98,7 +93,6 @@ MENSAJE_SISTEMA_CEO = (
     "Tu rol es coordinar, priorizar y maximizar el impacto organizacional, alineando cada acción con la visión de escalar soluciones data-driven automatizadas en el mercado global B2B."
 )
 
-# Diccionario que mapea cada agente con su carpeta local y su mensaje de sistema
 AGENTES = {
     "Sales":              ("contexto Sales",               MENSAJE_SISTEMA_SALES),
     "Marketing":          ("contexto Marketing",           MENSAJE_SISTEMA_MARKETING),
@@ -112,20 +106,11 @@ AGENTES = {
     "HR":                 ("contexto HR",                  MENSAJE_SISTEMA_HR)
 }
 
-# =====================================
-# FUNCIONES PARA LECTURA DE ARCHIVOS
-# =====================================
 
 def parse_file(ruta_archivo):
-    """
-    Devuelve el texto extraído del archivo y el nombre del archivo.
-    Soporta PDF, DOC, DOCX, XLS, XLSX, CSV, TXT, PPTX.
-    Ignora otros formatos.
-    """
     extension = ruta_archivo.lower().split('.')[-1]
     nombre_archivo = os.path.basename(ruta_archivo)
     texto = ""
-
     try:
         if extension == 'pdf':
             with open(ruta_archivo, 'rb') as f:
@@ -158,12 +143,6 @@ def parse_file(ruta_archivo):
     return texto, nombre_archivo
 
 def leer_carpeta_recursiva(carpeta):
-    """
-    Explora recursivamente la carpeta y sus subcarpetas, 
-    parsea los archivos soportados y concatena su texto, 
-    y guarda la lista de nombres de archivo.
-    Retorna (texto_concatenado, lista_nombres).
-    """
     contenido_total = ""
     lista_nombres = []
     if not os.path.exists(carpeta) or not os.path.isdir(carpeta):
@@ -181,14 +160,7 @@ def leer_carpeta_recursiva(carpeta):
 
     return contenido_total[:MAX_CHARS], lista_nombres
 
-# =====================================
-# FUNCIONES PARA LA API
-# =====================================
-
 def obtener_respuesta_api(prompt):
-    """
-    Envía el prompt a la API de Google Gemini y devuelve la respuesta generada.
-    """
     url = f"{API_ENDPOINT}?key={API_KEY}"
     data = {
         "contents": [{
@@ -204,12 +176,6 @@ def obtener_respuesta_api(prompt):
         return None
 
 def construir_prompt_agente(mensaje_sistema, contenido_contexto, lista_docs, solicitud_usuario):
-    """
-    Construye el prompt para un agente:
-      - Reemplaza [LISTA_DOCUMENTOS] con la lista de archivos.
-      - Reemplaza [contenido de archivos] con el texto extraído.
-      - Añade la solicitud del usuario.
-    """
     doc_string = "\n".join(lista_docs) if lista_docs else "Ningún archivo."
     prompt = mensaje_sistema.replace("[LISTA_DOCUMENTOS]", doc_string)
     prompt = prompt.replace("[contenido de archivos]", contenido_contexto)
@@ -217,37 +183,28 @@ def construir_prompt_agente(mensaje_sistema, contenido_contexto, lista_docs, sol
     return prompt
 
 def construir_prompt_ceo(respuestas_agentes):
-    """
-    Construye el prompt para el agente CEO, integrando las respuestas de todos los agentes.
-    """
     prompt = MENSAJE_SISTEMA_CEO + "\n\nAquí están las respuestas de los agentes:\n"
     for area, respuesta in respuestas_agentes.items():
         prompt += f"{area}:\n{respuesta}\n\n"
     prompt += "Basado en esta información, por favor proporciona una decisión o conclusión final."
     return prompt
 
-# =====================================
-# FUNCIÓN PARA PROCESAR SOLICITUD
-# =====================================
-
-def procesar_solicitud(solicitud_usuario, area_input=""):
+def procesar_solicitud(solicitud_usuario, areas_seleccionadas=None):
     """
     Procesa la solicitud dada.
-    Si se especifica un área (exacta según AGENTES), solo se procesa esa.
-    Sino, se procesan todas y se integra la respuesta final con el CEO.
-    Retorna la respuesta resultante (string).
+    'areas_seleccionadas' es una lista de strings con los nombres de las áreas.
+    Si está vacía o None, se procesan todas las áreas.
     """
-    if area_input:
-        if area_input in AGENTES:
-            agentes_procesar = {area_input: AGENTES[area_input]}
-        else:
-            print("El área ingresada no existe. Se procesarán todas las áreas.")
-            agentes_procesar = AGENTES
+    if areas_seleccionadas is not None and len(areas_seleccionadas) > 0:
+        # Filtra los agentes según las áreas seleccionadas
+        agentes_procesar = {
+            area: AGENTES[area] for area in areas_seleccionadas if area in AGENTES
+        }
     else:
+        # Si no se seleccionó nada, procesar todas
         agentes_procesar = AGENTES
 
     respuestas_agentes = {}
-
     for nombre_agente, (carpeta, mensaje_sistema) in agentes_procesar.items():
         print(f"Procesando agente: {nombre_agente}...")
         contenido_contexto, lista_archivos = leer_carpeta_recursiva(carpeta)
@@ -259,31 +216,36 @@ def procesar_solicitud(solicitud_usuario, area_input=""):
             respuestas_agentes[nombre_agente] = "Sin respuesta."
 
     if len(respuestas_agentes) > 1:
+        # Construye prompt para el CEO
         prompt_ceo = construir_prompt_ceo(respuestas_agentes)
         decision_ceo = obtener_respuesta_api(prompt_ceo)
         return decision_ceo if decision_ceo else "No se pudo obtener la respuesta final del CEO."
     else:
-        # Si solo se procesó un agente, retorna su respuesta.
+        # Si solo hubo un agente, devuelve su respuesta
         return next(iter(respuestas_agentes.values()))
 
-# =====================================
-# INTERFAZ CON STREAMLIT
-# =====================================
-
+# Interfaz con Streamlit
 st.title("Chat Multiagente - Saint Analytics")
 
-st.markdown("### Ingrese su solicitud y, opcionalmente, el área a procesar")
-solicitud = st.text_input("Solicitud:")
-area = st.text_input("Área a procesar (opcional):")
+st.markdown("### Ingrese su solicitud:")
+solicitud = st.text_input("Solicitud (por ejemplo, una pregunta o tarea):")
+
+st.markdown("### Áreas a procesar (opcional):")
+# Lista de áreas
+lista_areas = list(AGENTES.keys())
+areas_seleccionadas = st.multiselect(
+    "Seleccione una o varias áreas para involucrar en la respuesta. Si no seleccionas ninguna, se procesarán todas.",
+    lista_areas
+)
 
 if st.button("Enviar"):
     if solicitud.strip() == "":
         st.warning("Por favor, ingresa una solicitud.")
     else:
         with st.spinner("Procesando..."):
-            respuesta = procesar_solicitud(solicitud, area)
+            respuesta_final = procesar_solicitud(solicitud, areas_seleccionadas)
         st.markdown("**Respuesta:**")
-        st.write(respuesta)
+        st.write(respuesta_final)
 
 
 
